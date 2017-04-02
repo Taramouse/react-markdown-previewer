@@ -3,7 +3,7 @@ var MarkdownEditor = React.createClass({
   getInitialState: function () {
     return {
       content: localStorage.getItem('markdownStorage') ||
-`## Markdown Editor Preview
+      `## Markdown Editor Preview
 
 + Type your markdown into the left hand pane
 + See it previewed in the right hand pane.
@@ -52,16 +52,28 @@ var MarkdownEditor = React.createClass({
     return (
       <div className="container-fluid">
         <div className="row">
-          <h1 className="text-center">
-            React Markdown Editor
-				</h1>
+          <heading>
+            <h1 className="text-center text-primary">React Markdown Editor</h1>
+          </heading>
           <div className="col-xs-12 col-sm-6">
-            <h3><img src='https://raw.githubusercontent.com/dcurtis/markdown-mark/master/png/48x30-solid.png' width='48px' />Markdown</h3>
-            <textarea id="markdown" className="markdown" defaultValue={this.state.content} onChange={this.handleChange}></textarea>
+            <div className="panel panel-success">
+              <div className="panel-heading">
+                <h3 className="panel-title"><img src='https://raw.githubusercontent.com/dcurtis/markdown-mark/master/png/48x30-solid.png' width='48px' />Markdown</h3>
+              </div>
+              <div className="panel-body">
+                <textarea id="markdown" className="markdown" defaultValue={this.state.content} onChange={this.handleChange}></textarea>
+              </div>
+            </div>
           </div>
           <div className="col-xs-12 col-sm-6">
-            <h3>Preview</h3>
-            <div id="preview" dangerouslySetInnerHTML={this.rawMarkup()}></div>
+            <div className="panel panel-info">
+              <div className="panel-heading">
+                <h3 className="panel-title"><i className="fa fa-eye fa-lg" aria-hidden="true"></i>Preview</h3>
+              </div>
+              <div className="panel-body">
+                <div id="preview" dangerouslySetInnerHTML={this.rawMarkup()}></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
