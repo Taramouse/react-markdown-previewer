@@ -2,7 +2,7 @@ var MarkdownEditor = React.createClass({
 
   getInitialState: function () {
     return {
-      content: `## Markdown Editor Preview
+      content: localStorage.getItem('markdownStorage') ||`## Markdown Editor Preview
 
 + Type your markdown into the left hand pane
 + See it previewed in the right hand pane.
@@ -39,6 +39,15 @@ var MarkdownEditor = React.createClass({
     }
   },
 
+  componentWillMount: function () {
+    const script = document.createElement("script")
+
+    script.src = "./js/storage.js"
+    script.async = true
+
+    document.body.appendChild(script)
+  },
+
   render: function () {
     return (
       <div className="container-fluid">
@@ -47,7 +56,7 @@ var MarkdownEditor = React.createClass({
             React Markdown Editor
 				</h1>
           <div className="col-xs-12 col-sm-6">
-            <h3><img src='https://raw.githubusercontent.com/dcurtis/markdown-mark/master/png/48x30-solid.png' width='48px'/>Markdown</h3>
+            <h3><img src='https://raw.githubusercontent.com/dcurtis/markdown-mark/master/png/48x30-solid.png' width='48px' />Markdown</h3>
             <textarea id="markdown" className="markdown" defaultValue={this.state.content} onChange={this.handleChange}></textarea>
           </div>
           <div className="col-xs-12 col-sm-6">
