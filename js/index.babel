@@ -6,6 +6,27 @@ var MarkdownEditor = React.createClass({
     }
   },
 
+  rawMarkup: function () {
+    marked.setOptions({
+      renderer: new marked.Renderer(),
+      gfm: true,
+      tables: true,
+      breaks: false,
+      pedantic: false,
+      sanitize: true,
+      smartLists: true,
+      smartypants: false,
+      highlight: function (code) {
+        return hljs.highlightAuto(code).value
+      }
+    })
+
+    var rawMarkup = marked(this.state.content, { sanitize: true })
+    return {
+      __html: rawMarkup
+    }
+  },
+
   render: function () {
     return (
       <div className="container-fluid">
@@ -19,7 +40,7 @@ var MarkdownEditor = React.createClass({
           </div>
           <div className="col-xs-12 col-sm-6">
             <h3>Preview</h3>
-            <div id="preview"></div>
+            <div id="preview" dangerouslySetInnerHTML={this.rawMarkup()}></div>
           </div>
         </div>
       </div>
