@@ -75,11 +75,11 @@ var MarkdownEditor = React.createClass({
               </div>
             </div>
           </div>
-          <footer>
-            <p className="text-center">Designed by Nicky Keyse 2016</p>
-            <hr />
-          </footer>
         </div>
+        <footer>
+          <p className="text-center">Designed by Nicky Keyse 2016</p>
+          <hr />
+        </footer>
       </div>
     )
   }
