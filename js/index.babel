@@ -2,13 +2,13 @@ var MarkdownEditor = React.createClass({
 
   getInitialState: function () {
     return {
-      content: localStorage.getItem('markdownStorage') ||`## Markdown Editor Preview
+      content: localStorage.getItem('markdownStorage') ||
+`## Markdown Editor Preview
 
 + Type your markdown into the left hand pane
 + See it previewed in the right hand pane.
 
-![Image of Baracktocat](https://raw.githubusercontent.com/dcurtis/markdown-mark/master/png/208x128-solid.png)
-`
+![MD Image](https://raw.githubusercontent.com/dcurtis/markdown-mark/master/png/208x128-solid.png)`
     }
   },
 
